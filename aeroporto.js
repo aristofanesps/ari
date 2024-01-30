@@ -1,6 +1,6 @@
 
 const dominioAtual = window.location.hostname;
-if(dominioAtual==='https://aristofanesps.github.io/ari/aeroporto.js'{
+if(dominioAtual==='https://aristofanesps.github.io/ari/aeroporto.html'{
   function obterDataHoraFormatada() {
     var data = new Date();
     var options = {
