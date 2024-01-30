@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPIs NOVA MOBI PERNAMBUCO</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Garante que o corpo ocupa pelo menos 100% da altura da viewport */
+      margin: 0;
+      color: rgba(0, 0, 0, 0.685);
+    }
+
+    #container {
+      flex: 1; /* Faz com que o conteúdo empurre o rodapé para o final */
+      text-align: center;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      padding-left: 70px;
+      padding-right: 70px;
+      margin-top: 100px;
+      margin-bottom: 200px;
+      margin-left: 450px;
+      margin-right: 450px;
+      background-color: rgba(203, 216, 212, 0.404);
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.562);
+      border-radius: 6px;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    footer {
+      height: 50px; /* Altura do rodapé */
+      background-color: rgb(10, 4, 44);
+      text-align: center;
+      padding: 10px;
+      color: aliceblue;
+    }
+    img {
+        width: 250px;
+        right: 90px;
+    }
+    #img2{
+        width: 16px;
+        right: 16px;
+    }
+  </style>
+</head>
+<body>
+    
+  <div id="container">
+    <img src="imgLogoNovaMobi.png" alt="">
+    <h2>Estoque de EPIs</h2>
+    <select id="citySelect" onchange="redirectToURL()">
+
+      <option value="#">Escolha o Terminal</option>
+      <option value="afogados.html">Afogados</option>
+      <option value="aeroporto.html">Aeroporto</option>
+      <option value="abreulima.html">Abreu e Lima</option>
+      <option value="barro.html">Barro</option>
+      <option value="cajueiroseco.html">Cajueiro Seco</option>
+      <option value="cosmedamiao.html">Cosme e Damião</option>
+      <option value="cdu.html">CDU</option>
+      <option value="cabo.html">Cabo</option>
+      <option value="caxanga.html">Caxangá</option>
+      <option value="cavaleiro.html">Cavaleiro</option>
+      <option value="getulio.html">Getúlio Vargas</option>
+      <option value="igarassu.html">Igarassu</option>
+      <option value="jaboatao.html">Jaboatão</option>
+      <option value="joana.html">Joana Bezerra</option>
+      <option value="largo.html">Largo da Paz</option>
+      <option value="macaxeira.html">Macaxeira</option>
+      <option value="pelopidas.html">Pelópidas Silveira</option>
+      <option value="pe15.html">PE15</option>
+      <option value="prazeres.html">Prazeres</option>
+      <option value="recife.html">Recife</option>
+      <option value="riodoce.html">Rio Doce</option>
+      <option value="santa.html">Santa Luzia</option>
+      <option value="tancredo.html">Tancredo Neves</option>
+      <option value="tip.html">TIP</option>
+      <option value="xamba.html">Xambá</option>
+
+
+
+
+
+
+
+
+
+    </select>
+  </div>
+
+  <footer>Dúvidas entrar em contato com os Téc. Seg. Trabalho Ari <img id="img2" src="whatsapp.png" alt="">&nbsp;&nbsp;(81) 98172-2138 / Felipe (81) 98172-2049 <br><br>  Criado por Aristófanes Paulino</footer>
+
+  <script>
+      function redirectToURL() {
+      var select = document.getElementById("citySelect");
+      var selectedOption = select.options[select.selectedIndex];
+
+      if (selectedOption.value !== "#") {
+        window.location.href = selectedOption.value;
+      }
+    }
+  </script>
+ 
+</body>
+</html>

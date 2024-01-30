@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="santa.js" defer></script>
+
+  <title>Registro de Recebimento</title>
+  <style>
+    /* Seu estilo CSS existente */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      color: rgba(0, 0, 0, 0.822);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    select, input {
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    button {
+      padding: 8px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .scroll-container {
+      width: 600px;
+      height: 200px;
+      overflow: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    /* Novo estilo para centralizar */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #epi1{
+        width: 300px;
+    }
+    .estoque-info{
+    display: flex;
+    flex-direction: column; /* Garante que os itens fiquem em uma coluna */
+    justify-content: center;
+    align-items: center;
+    }
+    #filtrarDados{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 23px;
+      margin-top: -41px;
+    
+    }
+    #fil{
+      padding: 10px;
+    }
+    #tiJaboatao{
+      display: flex;
+      gap: 34px;
+      align-items: flex-start;
+      width: 50%;
+    }
+   
+    
+    #img1{
+      width: 170px;
+      height: 70px;
+    }
+    #botao{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 23px;
+    }
+    #voltar{
+      text-decoration: none;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="tiJaboatao">
+      <img id="img1" src="imgLogoNovaMobi.png" alt="">
+      <h1>TI SANTA LUZIA</h1>
+    </div>
+    <a id="voltar" href="index.html">Voltar</a>
+    <h2>Registro de Recebimento de EPIs</h2>
+
+    <!-- Restante do seu conteúdo aqui -->
+    
+
+    <label for="matricula">RE:</label>
+    <input type="number" id="matricula" placeholder="Digite RE do colaborador">
+
+    <label for="receivedByName">Nome do colaborador</label>
+    <input type="text" id="receivedByName" placeholder="Digite nome do colaborador">
+
+    <label for="productName">Escolha o EPI:</label>
+    <select id="productName">
+      <option value="disabled selected">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Selecione...</option>
+      <option value="Luva de Látex (amarela)">Luva de Látex (amarela)</option>
+      <option value="Luva Nitrílica (verde)">Luva Nitrílica (verde)</option>
+      <option value="Luva Pigmentada (algodão)">Luva Pigmentada (algodão)</option>
+      <option value="Luva Nitrilon">Luva Nitrilon</option>
+      <option value="Avental de Napa (preto)">Avental de Napa (preto)</option>
+      <option value="Colete Refletivo">Colete Refletivo</option> 
+      <option value="Máscara PFF2 (azul)">Máscara PFF2 (azul)</option>
+      <option value="Protetor Auricular">Protetor Auricular</option>
+      <option value="Óculos de Segurança">Óculos de Segurança</option>
+      <option value="Boné">Boné</option>
+      <option value="Boné Árabe">Boné Árabe</option>
+      <option value="Capa de Chuva">Capa de Chuva</option>
+      
+    </select>
+
+    <button onclick="registrarRecebimento()">Registrar Recebimento</button>
+    <h3>Controle de recebimento de EPIs</h3>
+    
+    <div class="scroll-container">
+      <table id="recebimentosTable">
+        <thead>
+          <tr>
+            <th>RE</th>
+            <th>Nome do colaborador</th>
+            <th>EPI entregue</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody id="recebimentosTbody">
+          <!-- Dados da tabela serão adicionados dinamicamente pelo JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="estoque-info">
+      
+      <!-- Adicione esta tabela abaixo das informações de estoque -->
+      <table id="estoqueTable">
+        <h3>Movimentação no estoque</h3>
+        <thead>
+          <tr>
+            <th id="epi1">EPIs</th>
+            <th>Qtd. em Estoque</th>
+          </tr>
+        <tbody>
+          <tr>
+            <td>Luva de Látex (amarela)</td>
+            <td id="estoqueInicialLatex">2</td>
+          </tr>
+          <tr>
+            <td>Luva Nitrílica (verde)</td>
+            <td id="estoqueInicialNitrilica">10</td>
+          </tr>
+          <tr>
+            <td>Luva Pigmentada (algodão)</td>
+            <td id="estoqueInicialPigmentada">10</td>
+          </tr>
+          <tr>
+            <td>Luva Nitrilon</td>
+            <td id="estoqueInicialNitrilon">12</td>
+          </tr>
+          <tr>
+            <td>Avental de Napa (preto)</td>
+            <td id="estoqueInicialAvental">12</td>
+          </tr>
+          <tr>
+            <td>Colete Refletivo</td>
+            <td id="estoqueInicialColete">12</td>
+          </tr>
+          <tr>
+            <td>Máscara PFF2 (azul)</td>
+            <td id="estoqueInicialMascara">12</td>
+          </tr>
+          <tr>
+            <td>Protetor Auricular</td>
+            <td id="estoqueInicialProtetor">12</td>
+          </tr>
+          <tr>
+            <td>Óculos de Segurança</td>
+            <td id="estoqueInicialOculos">12</td>
+          </tr>
+          <tr>
+            <td>Boné</td>
+            <td id="estoqueInicialBone">12</td>
+          </tr>
+          <tr>
+            <td>Boné Árabe</td>
+            <td id="estoqueInicialBoneArabe">12</td>
+          </tr>
+          <tr>
+            <td>Capa de Chuva</td>
+            <td id="estoqueInicialCapa">12</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Filtrar dados</h3>
+      <div id="filtrarDados">
+        <div id="fil">
+          
+          <label for="filterMatricula">Filtrar por RE:</label>
+          <input type="text" id="filterMatricula" oninput="filtrarDados('filterMatricula', 0)">
+          
+
+          <label for="filterName">Filtrar por Nome:</label>
+          <input type="text" id="filterName" oninput="filtrarDados('filterName', 1)">
+
+        </div>
+        
+        <div>
+          <label for="filterProduct">Filtrar por EPI:</label>
+          <input type="text" id="filterProduct" oninput="filtrarDados('filterProduct', 2)">
+
+          <label for="filterDate">Filtrar por Data:</label>
+          <input type="text" id="filterDate" oninput="filtrarDados('filterDate', 3)">
+
+        </div>
+
+        
+
+      </div>
+      <div>
+
+      </div>
+      
+        
+    </div>
+
+  
+  </div>
+
+  
+  <div id="botao">
+    <button onclick="acessarAlteracaoEstoque()">Alterar Estoque (Senha)</button>
+    <button onclick="limparDadosLocalStorage()">Limpar Dados (senha)</button>
+
+  </div>
+
+  
+</body>
+</html>
