@@ -1,6 +1,6 @@
 
-const dominioAtual = window.location.hostname
-
+const dominioAtual = window.location.hostname;
+if(dominioAtual==='https://aristofanesps.github.io/ari/aeroporto.html'{
   function obterDataHoraFormatada() {
     var data = new Date();
     var options = {
@@ -291,6 +291,13 @@ window.onload = function() {
 // Seu JavaScript existente
 // ...
  // Função para obter a data e hora formatadas
+
+  
+}else{
+  alert("ola mundo")
+}
+
+  
 
     
   
